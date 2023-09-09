@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SCP-294 Cup Creator</title>
+    <script type="text/javascript" src="cup.js"></script>
+    <link rel="stylesheet" type="text/css" href="cup.css">
+</head>
+<body>
+
+<div id="headerTitle">SCP-294 Cup Creator</div>
+<table>
+    <tr><td>Cup of:</td>           <td><input type="text" id="drinkName"></td></tr>
+    <tr><td>Color:</td>           <td><input type="color" id="drinkColor"></td></tr>
+    <tr title="0.0 = invisible, 1.0 = opaque"><td>Transparency:</td>           <td>0.0<input type="range" id="drinkAlpha" value="100">1.0</td></tr>
+    <tr><td>Glow:</td>           <td><input type="checkbox" id="drinkGlow"></td></tr>
+    <tr><td>Dispense Sound:</td>           <td><select id="drinkDispense">
+                                               <option>Machine Idling</option>
+                                               <option>Normal Dispense</option>
+                                               <option>Large Dispense</option>
+                                               <option>Anomalous Dispense</option>
+                                           </select></td></tr>
+    <tr><td>Drink Sound:</td>           <td><select id="drinkSound">
+                                               <option>Slurp</option>
+                                               <option>Spittake</option>
+                                               <option>Ahh...</option>
+                                               <option>Burned Mouth</option>
+                                               <option>Cough</option>
+                                               <option>Ew1</option>
+                                               <option>Ew2</option>
+                                           </select></td></tr>
+    <tr><td>Drink Message:</td>           <td><input type="text" id="drinkMSG"></td></tr>
+    <tr><td>Refuse Message:</td>           <td><input type="checkbox" onclick="updateRefuseMode()" id="refuse"><input type="text" id="refuseMSG" disabled="true"></td></tr>
+
+    <tr><td id="newSet"><br />Kill Info</td>
+    <tr><td>Death Type:</td>           <td>    <input type="radio" name="deathType" onclick="updateDeathMode()" id="none" value="none" checked="checked"> None<br />
+                                               <input type="radio" name="deathType" onclick="updateDeathMode()" id="lethal" value="lethal"> Lethal<br />
+                                               <input type="radio" name="deathType" onclick="updateDeathMode()" id="explosion" value="explosion"> Explosion
+                                       </td></tr>
+    <tr><td>Death Timer (in seconds):</td>           <td><input type="text" id="drinkKillTimer" oninput="updateDeathMSG()"></td></tr>
+    <tr><td>Death Message:</td>           <td><input type="text" id="drinkDeathMSG" disabled="true"></td></tr>
+
+    <tr><td id="newSet"><br />Effects</td>
+    <tr><td>Blur Timer (in seconds):</td>           <td><input type="text" id="drinkBlurTimer"></td></tr>
+    <tr title="Negative numbers can be put here to heal the player."><td>Damage:</td>           <td><input type="text" id="drinkInjury" oninput="updateDeathMSG()"></td></tr>
+    <tr title="Negative numbers can be put here to heal the player."><td>Blood Loss:</td>           <td><input type="text" id="drinkBloodloss" oninput="updateDeathMSG()"></td></tr>
+    <tr><td>Stomach Ache:</td>           <td><input type="checkbox" id="drink1025"></td></tr>
+
+    <tr><td id="newSet"><br />Blink/Stamina</td>
+    <tr title="Changes how fast the blink meter decreases (1.0 = normal speed, 2.0 = decreases twice as fast, 0.0 = doesn't decrease at all)."><td>Blink Effect:</td>           <td><input type="text" id="drinkBlinkEffect"></td></tr>
+    <tr><td>Blink Effect Timer (in seconds):</td>           <td><input type="text" id="drinkBlinkTimer"></td></tr>
+    <tr title="Changes how fast the stamina meter decreases (1.0 = normal speed, 2.0 = decreases twice as fast, 0.0 = doesn't decrease at all)."><td>Stamina Effect:</td>           <td><input type="text" id="drinkStaminaEffect"></td></tr>
+    <tr><td>Stamina Effect Timer (in seconds):</td>           <td><input type="text" id="drinkStaminaTimer"></td></tr>
+
+    <tr><td>Result:</td>            <td><div id="divOutput"></div></td></tr>
+    <tr><td><input type="button" value="Compute Drink" onclick="output294INI()"></td></tr>
+</table>
+
+
+
+
+</body>
+</html>
